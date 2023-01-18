@@ -1,0 +1,118 @@
+:root {
+  --bg-main-color: #fff;
+  --image-accent-color: #a980f8;
+  --video-accent-color: #fa7d67;
+  --note-accent-color: #ffcb58;
+  --todo-accent-color: #4bc400;
+  --border-input-color: #e3e2e3;
+  --accent-color: #3669fe;
+  --alert-color: #fa6767;
+  --border-color: #cccccc;
+  --shadow-color: #cccccc;
+  --text-black: #999999;
+  --black: #222222;
+  --border-radius: 4px;
+}
+li {
+  list-style: none;
+  padding-left: 0;
+}
+p {
+  color: var(--black);
+}
+* {
+  outline: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Roboto, Oxygen, sans-serif;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 1.25rem;
+  margin: 0;
+}
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.banner {
+}
+.banner-wrap {
+  border-bottom: 1px solid var(--border-color);
+}
+.banner-wrap > div {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.banner__title {
+  font-size: 1.5rem;
+  margin: 64px 20px 10px;
+  color: var(--black);
+}
+.banner__des {
+  margin: 0 20px 32px;
+  color: var(--text-black);
+}
+.add-button {
+  margin-left: auto;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  background-color: var(--accent-color);
+  color: #fff;
+  border-radius: 2px;
+  outline: unset;
+  border: unset;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.control-panel {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.create-button {
+  margin: 0.1em 0.2em;
+  text-align: center;
+  user-select: none;
+  padding: 1em 3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: white;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  border-radius: 2px;
+}
+.document {
+  width: 100%;
+  max-width: 1024px;
+  height: 100%;
+  overflow-y: auto;
+  /* Firefox */
+  scrollbar-width: 6px;
+  scrollbar-color: var(--bg-accent-color);
+  scrollbar-face-color: var(--accent-color);
+}
+.document::-webkit-scrollbar {
+  /* Safari and Chrome */
+  background-color: var(--bg-accent-color);
+  width: 6px;
+}
+.document::-webkit-scrollbar-thumb {
+  /* Safari and Chrome */
+  background-color: var(--accent-color);
+}
+.footer {
+  background: var(--bg-main-color);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 0.6rem;
+}
