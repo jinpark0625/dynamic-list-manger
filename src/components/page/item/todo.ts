@@ -1,0 +1,24 @@
+import { BaseComponet } from "../../component.js";
+
+export class TodoComponent extends BaseComponet<HTMLElement> {
+  constructor(title: string, todo: string) {
+    super(
+      `
+        <section class="note">
+          <h2 class="todo__title"></h2>
+          <input type="checkbox" class="todo-checkbox">
+        </section>
+      `
+    );
+
+    const titleElement = this.element.querySelector(
+      ".todo__title"
+    )! as HTMLHeadingElement;
+    titleElement.textContent = title;
+
+    const todoElement = this.element.querySelector(
+      ".todo-checkbox"
+    )! as HTMLInputElement;
+    todoElement.insertAdjacentText("afterend", todo);
+  }
+}
