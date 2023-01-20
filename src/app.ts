@@ -1,3 +1,4 @@
+import { InputDialog } from "./components/dialog/dialog.js";
 import { ImageComponent } from "./components/page/item/image.js";
 import {
   Composable,
@@ -32,6 +33,21 @@ class App {
       "https://www.youtube.com/embed/K3-jG52XwuQ"
     );
     this.page.addChild(video);
+
+    const imageBtn = document.querySelector("#new-image")! as HTMLButtonElement;
+    imageBtn.addEventListener("click", () => {
+      const dialog = new InputDialog();
+
+      dialog.setOnCloseListener(() => {
+        dialog.removeFrom(document.body);
+      });
+      dialog.setOnSubmitListener(() => {
+        // 섹션을 만들어서 페이지에 추가한다.
+        dialog.removeFrom(document.body);
+      });
+
+      dialog.attachTo(document.body);
+    });
   }
 }
 
