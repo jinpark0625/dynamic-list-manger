@@ -5,50 +5,84 @@ import {
   PageComponent,
   PageItemComponent,
 } from "./components/page/page.js";
-import { NoteComponent } from "./components/page/item/note.js";
-import { TodoComponent } from "./components/page/item/todo.js";
-import { VideoComponent } from "./components/page/item/video.js";
 import { Component } from "./components/component.js";
+import { MediaSectionInput } from "./components/dialog/input/media-input.js";
+import { TextSectionInput } from "./components/dialog/input/text-input.js";
 
 class App {
   private readonly page: Component & Composable;
-  constructor(appRoot: HTMLElement) {
+  constructor(appRoot: HTMLElement, dialotRoot: HTMLElement) {
     this.page = new PageComponent(PageItemComponent);
     this.page.attachTo(appRoot);
-
-    const image = new ImageComponent(
-      "Image Title",
-      "https://picsum.photos/600/300"
-    );
-    this.page.addChild(image);
-
-    const note = new NoteComponent("Note Title", "Note Body");
-    this.page.addChild(note);
-
-    const todo = new TodoComponent("TodoTitle", "Todo Body");
-    this.page.addChild(todo);
-
-    const video = new VideoComponent(
-      "Video Title",
-      "https://www.youtube.com/embed/K3-jG52XwuQ"
-    );
-    this.page.addChild(video);
 
     const imageBtn = document.querySelector("#new-image")! as HTMLButtonElement;
     imageBtn.addEventListener("click", () => {
       const dialog = new InputDialog();
+      const inputSection = new MediaSectionInput();
+      dialog.addChild(inputSection);
+      dialog.attachTo(dialotRoot);
 
       dialog.setOnCloseListener(() => {
-        dialog.removeFrom(document.body);
+        dialog.removeFrom(dialotRoot);
       });
       dialog.setOnSubmitListener(() => {
-        // 섹션을 만들어서 페이지에 추가한다.
-        dialog.removeFrom(document.body);
+        const image = new ImageComponent(inputSection.title, inputSection.url);
+        this.page.addChild(image);
+        dialog.removeFrom(dialotRoot);
       });
+    });
 
-      dialog.attachTo(document.body);
+    const videoBtn = document.querySelector("#new-video")! as HTMLButtonElement;
+    videoBtn.addEventListener("click", () => {
+      const dialog = new InputDialog();
+      const inputSection = new MediaSectionInput();
+      dialog.addChild(inputSection);
+      dialog.attachTo(dialotRoot);
+
+      dialog.setOnCloseListener(() => {
+        dialog.removeFrom(dialotRoot);
+      });
+      dialog.setOnSubmitListener(() => {
+        const image = new ImageComponent(inputSection.title, inputSection.url);
+        this.page.addChild(image);
+        dialog.removeFrom(dialotRoot);
+      });
+    });
+
+    const noteBtn = document.querySelector("#new-note")! as HTMLButtonElement;
+    noteBtn.addEventListener("click", () => {
+      const dialog = new InputDialog();
+      const inputSection = new TextSectionInput();
+      dialog.addChild(inputSection);
+      dialog.attachTo(dialotRoot);
+
+      dialog.setOnCloseListener(() => {
+        dialog.removeFrom(dialotRoot);
+      });
+      dialog.setOnSubmitListener(() => {
+        const image = new ImageComponent(inputSection.title, inputSection.body);
+        this.page.addChild(image);
+        dialog.removeFrom(dialotRoot);
+      });
+    });
+
+    const todoBtn = document.querySelector("#new-todo")! as HTMLButtonElement;
+    todoBtn.addEventListener("click", () => {
+      const dialog = new InputDialog();
+      const inputSection = new TextSectionInput();
+      dialog.addChild(inputSection);
+      dialog.attachTo(dialotRoot);
+
+      dialog.setOnCloseListener(() => {
+        dialog.removeFrom(dialotRoot);
+      });
+      dialog.setOnSubmitListener(() => {
+        const image = new ImageComponent(inputSection.title, inputSection.body);
+        this.page.addChild(image);
+        dialog.removeFrom(dialotRoot);
+      });
     });
   }
 }
 
-new App(document.querySelector(".document")! as HTMLElement);
+new App(document.querySelector(".document")! as HTMLElement, document.body);
