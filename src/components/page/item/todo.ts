@@ -7,6 +7,7 @@ export class TodoComponent extends BaseComponet<HTMLElement> {
         <section class="note">
           <h2 class="todo__title"></h2>
           <input type="checkbox" class="todo-checkbox">
+          <label for="todo-checkbox" class="todo-label"></label>
         </section>
       `
     );
