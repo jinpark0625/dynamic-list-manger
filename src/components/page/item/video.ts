@@ -4,8 +4,8 @@ export class VideoComponent extends BaseComponet<HTMLElement> {
   constructor(title: string, url: string) {
     super(`
             <section class="video">
+                <div class="title-wrap"><h2 class="video__title"></h2></div>
                 <div class="video__player"><iframe class="video__iframe"></iframe></div>
-                <h3 class="video__title"></h3>
             </section>
         `);
 
@@ -18,7 +18,7 @@ export class VideoComponent extends BaseComponet<HTMLElement> {
     const titleElement = this.element.querySelector(
       ".video__title"
     )! as HTMLHeadingElement;
-    titleElement.textContent = title;
+    titleElement.innerHTML = `<i class="ai-video title__icons" id="video_icon"></i> ${title}`;
   }
 
   private convertToEmbeddedURL(url: string): string {

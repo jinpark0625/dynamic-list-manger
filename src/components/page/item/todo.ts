@@ -5,9 +5,11 @@ export class TodoComponent extends BaseComponet<HTMLElement> {
     super(
       `
         <section class="note">
-          <h2 class="todo__title"></h2>
+        <div class="title-wrap"><h2 class="todo__title"></h2></div>
+        <div class="todo__body">
           <input type="checkbox" class="todo-checkbox">
           <label for="todo-checkbox" class="todo-label"></label>
+        </div>
         </section>
       `
     );
@@ -15,7 +17,7 @@ export class TodoComponent extends BaseComponet<HTMLElement> {
     const titleElement = this.element.querySelector(
       ".todo__title"
     )! as HTMLHeadingElement;
-    titleElement.textContent = title;
+    titleElement.innerHTML = `<i class="ai-check-box title__icons" id="todo_icon"></i> ${title}`;
 
     const todoElement = this.element.querySelector(
       ".todo-checkbox"

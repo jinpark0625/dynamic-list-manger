@@ -4,7 +4,7 @@ export class NoteComponent extends BaseComponet<HTMLElement> {
     super(
       `
       <section class="note">
-        <h2 class="note__title"></h2>
+        <div class="title-wrap"><h2 class="note__title"></h2></div>
         <p class="note__body"></p>
       </section>
     `
@@ -13,7 +13,7 @@ export class NoteComponent extends BaseComponet<HTMLElement> {
     const titleElement = this.element.querySelector(
       ".note__title"
     )! as HTMLHeadingElement;
-    titleElement.textContent = title;
+    titleElement.innerHTML = `<i class="ai-clipboard title__icons" id="note_icon"></i> ${title}`;
 
     const bodyElement = this.element.querySelector(
       ".note__body"
