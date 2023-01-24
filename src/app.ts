@@ -7,7 +7,6 @@ import {
   MediaData,
   TextData,
 } from "./components/dialog/dialog.js";
-
 import {
   Composable,
   PageComponent,
@@ -56,7 +55,7 @@ class App {
   ) {
     const element = document.querySelector(selector)! as HTMLButtonElement;
     element.addEventListener("click", () => {
-      const dialog = new InputDialog();
+      const dialog = new InputDialog(selector);
       const input = new InputComponent();
 
       dialog.addChild(input);
