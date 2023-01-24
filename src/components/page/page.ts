@@ -37,12 +37,15 @@ export class PageItemComponent
       <li class="page-item" draggable="true">
         <section class="page-item__body">
           <div class="page-item__controls">
-            <button class="close">&times;</button>
+            <button class="close">
+              <i class="ai-trash-bin"></i>
+            </button>
           </div>
         </section>
       </li>
       `
     );
+
     const closeBtn = this.element.querySelector(".close")! as HTMLButtonElement;
     closeBtn.onclick = () => {
       this.closeListener && this.closeListener();
@@ -91,7 +94,7 @@ export class PageItemComponent
     const container = this.element.querySelector(
       ".page-item__body"
     )! as HTMLElement;
-    child.attachTo(container);
+    child.attachTo(container, "beforeend");
   }
   setOnCloseListener(listener: OnCloseListener) {
     this.closeListener = listener;
@@ -157,10 +160,12 @@ export class PageComponent
     const item = new this.pageItemConstructor();
     item.addChild(section);
     item.attachTo(this.element, "beforeend");
+
     item.setOnCloseListener(() => {
       item.removeFrom(this.element);
       this.children.delete(item);
     });
+
     this.children.add(item);
     item.setOnDragStateListener(
       (target: SectionContainer, state: DragState) => {
