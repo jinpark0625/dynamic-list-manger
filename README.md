@@ -1,4 +1,4 @@
-# Dynamic-List-Manger
+# Dynamic-List-Manager
 
 ## Introduction
 
