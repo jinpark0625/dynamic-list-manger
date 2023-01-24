@@ -8,12 +8,10 @@ export class TextSectionInput
     super(`
     <div>
         <div class="form__container">
-          <label for="title">Title</label>
-          <input type="text" id="title" />
+          <input type="text" id="title" placeholder="Title.."/>
         </div>
         <div class="form__container">
-          <label for="body">Body</label>
-          <textarea type="text" row="3" id="body"></textarea>
+          <textarea type="text" row="3" id="body" placeholder="Body.." maxlength="600"></textarea>
         </div>
     </div>
 `);
